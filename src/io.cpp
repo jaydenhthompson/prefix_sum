@@ -25,16 +25,16 @@ void read_file(options_t &args,
 }
 
 void write_file(const options_t &args,
-				const prefix_sum_args_t &opts)
+				const std::vector<int> &out_vals)
 {
 	// Open file
 	std::ofstream out;
 	out.open(args.out_file, std::ofstream::trunc);
 
 	// Write solution to output file
-	for (int i = 0; i < opts.n_vals; ++i)
+	for (auto & e: out_vals)
 	{
-		out << opts.output_vals[i] << std::endl;
+		out << e << std::endl;
 	}
 
 	out.flush();

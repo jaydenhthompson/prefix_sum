@@ -1,14 +1,14 @@
 #include "prefix_sum.h"
 #include "helpers.h"
 
-void* compute_prefix_sum(void *a)
+#include <sstream>
+#include <mutex>
+
+std::mutex m;
+
+void compute_prefix_sum(prefix_sum_args_t &a)
 {
-    //prefix_sum_args_t *args = (prefix_sum_args_t *)a;
-
-    /************************
-     * Your code here...    *
-     * or wherever you like *
-     ************************/
-
-    return 0;
+    std::stringstream ss;
+    ss << "HI" << a.t_id << std::endl;
+    std::cout << ss.str();
 }

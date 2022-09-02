@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     }
 
     // Setup threads
-    std::vector<std::thread> threads;
+    std::vector<std::thread> threads(opts.n_threads);
 
     // Setup args & read input data
     std::vector<prefix_sum_args_t> ps_args(opts.n_threads);
@@ -41,8 +41,7 @@ int main(int argc, char **argv)
     scan_operator = op;
     //scan_operator = add;
 
-    fill_args(ps_args, opts.n_threads, n_vals, input_vals, output_vals,
-              opts.spin, scan_operator, opts.n_loops);
+    fill_args(ps_args, opts.n_threads, n_vals, &input_vals, &output_vals, opts.spin, scan_operator, opts.n_loops);
 
     // Start timer
     auto start = std::chrono::high_resolution_clock::now();
@@ -54,12 +53,12 @@ int main(int argc, char **argv)
         for (int i = 1; i < n_vals; ++i)
         {
             //y_i = y_{i-1}  <op>  x_i
-            output_vals[i] = scan_operator(output_vals[i - 1], input_vals[i], opts.n_loops);
+            ps_args[0].output_values->at(i) = scan_operator(output_vals[i - 1], input_vals[i], opts.n_loops);
         } 
     }
     else
     {
-        //start_threads(threads, opts.n_threads, ps_args, <your function>);
+        start_threads(threads, ps_args, compute_prefix_sum);
 
         // Wait for threads to finish
         join_threads(threads);
@@ -71,5 +70,5 @@ int main(int argc, char **argv)
     std::cout << "time: " << diff.count() << std::endl;
 
     // Write output data
-    write_file(opts, ps_args[0]);
+    write_file(opts, output_vals);
 }

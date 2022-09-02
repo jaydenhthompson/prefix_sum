@@ -12,7 +12,7 @@
 
 void start_threads(std::vector<std::thread> &threads,
                    std::vector<prefix_sum_args_t> &args,
-                   std::function<void(prefix_sum_args_t)>);
+                   std::function<void(prefix_sum_args_t&)>);
 
 void join_threads(std::vector<std::thread> &threads);
 

@@ -8,7 +8,7 @@ from time import sleep
 #  Feel free (a.k.a. you have to) to modify this to instrument your code
 #
 
-THREADS = [0]
+THREADS = [0, 10]
 LOOPS = [10000, 1000000]
 INPUTS = ["seq_64_test.txt"]
 

@@ -15,6 +15,6 @@ void read_file(options_t &args,
                std::vector<int> &output_vals);
 
 void write_file(const options_t &args,
-                const prefix_sum_args_t &opts);
+                const std::vector<int> &output_vals);
 
 #endif

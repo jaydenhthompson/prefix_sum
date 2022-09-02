@@ -5,4 +5,6 @@
 #include <spin_barrier.h>
 #include <iostream>
 
-void* compute_prefix_sum(void* a);
+#include "helpers.h"
+
+void compute_prefix_sum(prefix_sum_args_t &a);
