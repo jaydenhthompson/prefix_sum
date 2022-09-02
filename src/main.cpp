@@ -54,7 +54,7 @@ int main(int argc, char **argv)
         for (int i = 1; i < n_vals; ++i)
         {
             //y_i = y_{i-1}  <op>  x_i
-            output_vals[i] = scan_operator(output_vals[i - 1], input_vals[i], ps_args[i].n_loops);
+            output_vals[i] = scan_operator(output_vals[i - 1], input_vals[i], opts.n_loops);
         } 
     }
     else
