@@ -5,16 +5,15 @@
 #include <stdlib.h>
 #include <iostream>
 #include <prefix_sum.h>
+#include <memory>
+#include <thread>
+#include <vector>
 #include "helpers.h"
 
-pthread_t* alloc_threads(int n_threads);
+void start_threads(std::vector<std::thread> &threads,
+                   std::vector<prefix_sum_args_t> &args,
+                   std::function<void(prefix_sum_args_t)>);
 
-void start_threads(pthread_t*               threads,
-                  int                       n_threads,
-                  struct prefix_sum_args_t* args,
-                  void* (*start_routine) (void*));
-
-void join_threads(pthread_t* threads,
-                  int        n_threads);
+void join_threads(std::vector<std::thread> &threads);
 
 #endif

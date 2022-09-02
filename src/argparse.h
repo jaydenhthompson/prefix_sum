@@ -13,5 +13,5 @@ struct options_t {
     bool spin;
 };
 
-void get_opts(int argc, char **argv, struct options_t *opts);
+void get_opts(int argc, char **argv, options_t &opts);
 #endif

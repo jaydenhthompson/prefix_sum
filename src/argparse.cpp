@@ -2,7 +2,7 @@
 
 void get_opts(int argc,
               char **argv,
-              struct options_t *opts)
+              options_t &opts)
 {
     if (argc == 1)
     {
@@ -15,7 +15,7 @@ void get_opts(int argc,
         exit(0);
     }
 
-    opts->spin = false;
+    opts.spin = false;
 
     struct option l_opts[] = {
         {"in", required_argument, NULL, 'i'},
@@ -33,19 +33,19 @@ void get_opts(int argc,
         case 0:
             break;
         case 'i':
-            opts->in_file = (char *)optarg;
+            opts.in_file = (char *)optarg;
             break;
         case 'o':
-            opts->out_file = (char *)optarg;
+            opts.out_file = (char *)optarg;
             break;
         case 'n':
-            opts->n_threads = atoi((char *)optarg);
+            opts.n_threads = atoi((char *)optarg);
             break;
         case 's':
-            opts->spin = true;
+            opts.spin = true;
             break;
         case 'l':
-            opts->n_loops = atoi((char *)optarg);
+            opts.n_loops = atoi((char *)optarg);
             break;
         case ':':
             std::cerr << argv[0] << ": option -" << (char)optopt << "requires an argument." << std::endl;

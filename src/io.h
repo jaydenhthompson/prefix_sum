@@ -5,13 +5,16 @@
 #include <prefix_sum.h>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
-void read_file(struct options_t* args,
-               int*              n_vals,
-               int**             input_vals,
-               int**             output_vals);
+#include "helpers.h"
 
-void write_file(struct options_t*         args,
-                struct prefix_sum_args_t* opts);
+void read_file(options_t &args,
+               int &n_vals,
+               std::vector<int> &input_vals,
+               std::vector<int> &output_vals);
+
+void write_file(const options_t &args,
+                const prefix_sum_args_t &opts);
 
 #endif

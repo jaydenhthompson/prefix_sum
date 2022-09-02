@@ -4,9 +4,8 @@
 #include <pthread.h>
 #include <iostream>
 
-class spin_barrier {
-  
-
+class spin_barrier
+{
 };
 
 #endif
