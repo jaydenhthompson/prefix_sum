@@ -4,6 +4,7 @@
 #include <pthread.h>
 #include <iostream>
 #include <atomic>
+#include <mutex>
 
 class spin_barrier
 {
@@ -13,9 +14,10 @@ public:
     void wait_for_all();
 
 private:
-
     const int n_threads;
     std::atomic<int> counter;
+    std::atomic<bool> go;
+    std::mutex mtx;
 };
 
 #endif

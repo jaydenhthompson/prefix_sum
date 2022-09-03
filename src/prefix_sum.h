@@ -7,4 +7,6 @@
 
 #include "helpers.h"
 
+void init(int num_vals);
+
 void compute_prefix_sum(prefix_sum_args_t &a);

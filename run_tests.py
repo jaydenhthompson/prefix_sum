@@ -8,9 +8,9 @@ from time import sleep
 #  Feel free (a.k.a. you have to) to modify this to instrument your code
 #
 
-THREADS = [0, 10]
-LOOPS = [10000, 1000000]
-INPUTS = ["seq_64_test.txt"]
+THREADS = [i for i in range(0, 33) if i%2==0]
+LOOPS = [10 ** i for i in range(1, 6)]
+INPUTS = ["seq_64_test.txt","1k.txt","1k.txt","8k.txt","16k.txt"]
 
 csvs = []
 for inp in INPUTS:
