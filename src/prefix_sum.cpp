@@ -24,7 +24,7 @@ void compute_prefix_sum(prefix_sum_args_t &a)
         int idx = a.t_id;
         while (idx + stride < a.n_vals)
         {
-            if(idx + 1 <= stride && ((idx - offset) % (stride * 2)) == 0)
+            if(idx + 1 >= stride && ((idx - offset) % (stride * 2)) == 0)
             {
                 a.output_values->at(idx + stride) += a.output_values->at(idx);
             }
@@ -41,7 +41,7 @@ void compute_prefix_sum(prefix_sum_args_t &a)
         int idx = a.t_id;
         while (idx + stride < a.n_vals)
         {
-            if(idx + 1 <= stride && ((idx - offset) % (stride * 2)) == 0)
+            if(idx + 1 >= stride && ((idx - offset) % (stride * 2)) == 0)
             {
                 a.output_values->at(idx + stride) += a.output_values->at(idx);
             }
