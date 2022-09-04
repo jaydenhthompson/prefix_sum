@@ -8,17 +8,17 @@ from time import sleep
 #  Feel free (a.k.a. you have to) to modify this to instrument your code
 #
 
-THREADS = [i for i in range(0, 33) if i%2==0]
-LOOPS = [10 ** i for i in range(1, 6)]
-INPUTS = ["seq_64_test.txt","1k.txt","1k.txt","8k.txt","16k.txt"]
+THREADS = [0, 1, 2]
+LOOPS = [10]
+INPUTS = ["seq_64_test.txt"]
 
 csvs = []
 for inp in INPUTS:
     for loop in LOOPS:
         csv = ["{}/{}".format(inp, loop)]
         for thr in THREADS:
-            cmd = "./bin/prefix_scan -o temp.txt -n {} -i tests/{} -l {}".format(
-                thr, inp, loop)
+            cmd = "./bin/prefix_scan -o results/{} -n {} -i tests/{} -l {}".format(
+                "{}_{}_{}".format(inp.split(".")[0], thr, loop), thr, inp, loop)
             out = check_output(cmd, shell=True).decode("ascii")
             m = re.search("time: (.*)", out)
             if m is not None:

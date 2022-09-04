@@ -46,14 +46,14 @@ int main(int argc, char **argv)
     // Start timer
     auto start = std::chrono::high_resolution_clock::now();
 
+    std::copy(input_vals.begin(), input_vals.end(), output_vals.begin());
     if (sequential)
     {
         // sequential prefix scan
-        output_vals[0] = input_vals[0];
         for (int i = 1; i < n_vals; ++i)
         {
             // y_i = y_{i-1}  <op>  x_i
-            ps_args[0].output_values->at(i) = scan_operator(output_vals[i - 1], input_vals[i], opts.n_loops);
+            output_vals[i] = scan_operator(output_vals[i - 1], input_vals[i], opts.n_loops);
         }
     }
     else
